@@ -19,3 +19,20 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Blender dingen
+*.blend1
+*.blend1.meta
+
+# ============== #
+# WORD generated #
+# ============== #
+
+~$*
+
+# =============== #
+# LaTeX generated #
+# =============== #
+
+*.aux
+*.synctex.gz
