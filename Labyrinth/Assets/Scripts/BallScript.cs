@@ -8,24 +8,40 @@ public class BallScript : MonoBehaviour {
 	private Quaternion start_rotation_level;
 	private GameObject level;
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		level = GameObject.FindWithTag("Level");
 		start_position_ball = transform.position;
 		start_rotation_level = level.transform.rotation;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+
+	void OnCollisionEnter(Collision other) 
+	{
 	
-		if (transform.position.y <= -10) {
-			Reset ();
-		}
+            if(other.gameObject.tag == "Collide")
+            {
+				Reset ();
+			}
+	
+		
+
+			if(other.gameObject.tag == "nextLevel")
+			{
+				NextLevel ();
+			}
+
 	}
 
-	void Reset(){
+	void Reset()
+	{
 		level.transform.rotation = start_rotation_level;
 		transform.position = start_position_ball;
+	}
+
+	void NextLevel()
+	{
+		Application.LoadLevel(2);
 	}
 
 }
