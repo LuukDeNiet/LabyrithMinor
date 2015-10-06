@@ -45,9 +45,6 @@ public class BallScript : MonoBehaviour {
 		Application.LoadLevel (i + 1);
 	}
 
-	void NextLevel()
-	{
-		Application.LoadLevel(2);
-	}
+
 
 }
