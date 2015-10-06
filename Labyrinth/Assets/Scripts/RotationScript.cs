@@ -11,7 +11,7 @@ public class RotationScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		constante = 1;
+
 
 	}
 	
@@ -24,14 +24,11 @@ public class RotationScript : MonoBehaviour {
 	void FixedUpdate() {
 		rotateZ = Input.GetAxis ("Horizontal") * -1;
 		rotateX = Input.GetAxis ("Vertical");
-		transform.eulerAngles = new Vector3 (rotateX, 0.0f, rotateZ) * rotationSpeed * constante;
+		transform.eulerAngles = new Vector3 (rotateX, 0.0f, rotateZ) * rotationSpeed;
 
-	}
+	
 
-	void InverseControls(){
-		constante = -1;
-		yield return new WaitForSeconds (10);
-		constante = 1;
+
 	}
 
 }

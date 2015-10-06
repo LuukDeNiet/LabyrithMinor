@@ -3,6 +3,12 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour {
 
+	public GameObject other;
+
+	void Start(){
+
+	//Rigidbody rb = other.GetComponent<Rigidbody>();
+	}
 
 
 	void Update()
@@ -16,15 +22,14 @@ public class PowerUp : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Ball") {
 			gameObject.SetActive(false);
-			SetInverseControls();
+			Powerup();
 		}
 	}
 
-	void SetInverseControls(){
+	void Powerup(){
 
-		RotationScript rotationScript = GetComponent<RotationScript>();
-		rotationScript.InverseControls();
-
+	
+		other.GetComponent<Rigidbody>().AddForce(new Vector3 (0,0,-500));
 	}
 
 
