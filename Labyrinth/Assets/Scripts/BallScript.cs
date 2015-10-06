@@ -26,6 +26,12 @@ public class BallScript : MonoBehaviour {
 	void Reset(){
 		level.transform.rotation = start_rotation_level;
 		transform.position = start_position_ball;
+		GetComponent<Rigidbody>().velocity = new Vector3 (0,0,0);
+	}
+
+	void NextLevel(){
+		int i = Application.loadedLevel;
+		Application.LoadLevel (i + 1);
 	}
 
 }

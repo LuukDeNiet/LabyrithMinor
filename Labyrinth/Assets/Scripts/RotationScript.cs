@@ -6,8 +6,13 @@ public class RotationScript : MonoBehaviour {
 	private float rotateZ;
 	public int rotationSpeed;
 
+	public int constante;
+
 	// Use this for initialization
 	void Start () {
+
+		constante = 1;
+
 	}
 	
 	// Update is called once per frame
@@ -19,8 +24,14 @@ public class RotationScript : MonoBehaviour {
 	void FixedUpdate() {
 		rotateZ = Input.GetAxis ("Horizontal") * -1;
 		rotateX = Input.GetAxis ("Vertical");
-		transform.eulerAngles = new Vector3 (rotateX, 0.0f, rotateZ) * rotationSpeed;
+		transform.eulerAngles = new Vector3 (rotateX, 0.0f, rotateZ) * rotationSpeed * constante;
 
+	}
+
+	void InverseControls(){
+		constante = -1;
+		yield return new WaitForSeconds (10);
+		constante = 1;
 	}
 
 }
