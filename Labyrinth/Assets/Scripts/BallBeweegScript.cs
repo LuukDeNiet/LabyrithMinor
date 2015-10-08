@@ -11,12 +11,17 @@ public class BallBeweegScript : MonoBehaviour {
 	
 	public Rigidbody rb;
 	public Rigidbody level;
-	
+
+	private Vector3 curSpeed;
+	private bool touchLevel; 
+
 	public float moveSpeed; 
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		// bal moet initieel vallen
+		touchLevel = true;
 	}
 	
 	// Update is called once per frame
@@ -38,5 +43,24 @@ public class BallBeweegScript : MonoBehaviour {
 			rb.AddForce(new Vector3(moveX, 0.0f, moveZ) * moveSpeed * Time.deltaTime);
 			level.MoveRotation(Quaternion.Euler(new Vector3(moveZ, 0.0f, -moveX) * 200.0f * Time.deltaTime));
 		}
+
+		if (!touchLevel) {
+			curSpeed = rb.velocity;
+			rb.velocity = new Vector3 (curSpeed.x, -10000000000.0f, curSpeed.z);
+		}
+
+
 	}
+
+	// Ervoor zorgen dat rotatie van het level niet de bal omhoog lanceert
+	void onCollisionExit(Collision other) {
+		touchLevel = false;
+	}
+
+	void onCollisionEnter(Collision other) {
+		touchLevel = true;
+	}
+
+
 }
+
