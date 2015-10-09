@@ -12,6 +12,8 @@ public class BallBeweegScript : MonoBehaviour {
 	public Rigidbody rb;
 	public Rigidbody level;
 
+	public GameObject camera;
+
 	private Vector3 curSpeed;
 	private bool touchLevel; 
 
@@ -40,8 +42,14 @@ public class BallBeweegScript : MonoBehaviour {
 			moveZ = Input.GetAxis ("Vertical");
 			moveX = Input.GetAxis ("Horizontal");
 			//transform.eulerAngles = new Vector3 (rotateX, 0.0f, rotateZ) * rotationspeed * Time.deltaTime;
-			rb.AddForce(new Vector3(moveX, 0.0f, moveZ) * moveSpeed * Time.deltaTime);
-			level.MoveRotation(Quaternion.Euler(new Vector3(moveZ, 0.0f, -moveX) * 200.0f * Time.deltaTime));
+			//rb.AddForce(new Vector3(moveX, 0.0f, moveZ) * moveSpeed * Time.deltaTime);
+			//level.MoveRotation(Quaternion.Euler(new Vector3(moveZ, 0.0f, -moveX) * 200.0f * Time.deltaTime));
+			Physics.gravity = new Vector3(moveX, 0.0f, moveZ);
+			//camera.transform.rotation = Quaternion.Euler(new Vector3(90f -  moveZ * 5f , 0.0f, moveX * 5f ));
+			//camera.transform.rotation = Quaternion.AngleAxis(10, Vector3.up * moveX);
+			//camera.transform.rotation = Quaternion.RotateTowards(camera.transform.rotation, target.rotation, 5.0f * Time.deltaTime);
+			camera.transform.RotateAround(Vector3.zero, Vector3.left * moveX, 20 * Time.deltaTime);
+			//camera.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(90.0f , moveX, 0.0f));
 		}
 
 		if (!touchLevel) {
