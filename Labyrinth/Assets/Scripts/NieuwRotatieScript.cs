@@ -14,11 +14,14 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	public Rigidbody ball;
 	public Rigidbody gameCamera;
+
+	public float inverse;
 	
 
 	// Use this for initialization
 	void Start () {
 		ball = GetComponent<Rigidbody> ();
+		inverse = 1.0f;
 	}
 	
 	// Update is called once per frame
@@ -30,13 +33,15 @@ public class NieuwRotatieScript : MonoBehaviour {
 		moveZ = Input.GetAxis ("Vertical");
 		moveVector = new Vector3 (moveX, 0.0f, moveZ);
 
-		ball.AddForce (moveVector * moveSpeed * Time.deltaTime);
+		ball.AddForce (moveVector * moveSpeed * Time.deltaTime * inverse);
 
 		rotateZ = moveX * 7.0f;
 		rotateX = moveZ * -7.0f;
 
 		// vector3.right = x as, vector3.up = z as
-		gameCamera.MoveRotation(Quaternion.AngleAxis(rotateX, Vector3.right) *  Quaternion.AngleAxis(rotateZ, Vector3.forward));
+		gameCamera.MoveRotation(Quaternion.AngleAxis(rotateX, Vector3.right * inverse ) *  Quaternion.AngleAxis(rotateZ, Vector3.forward * inverse));
 		
 	}
+
+	
 }

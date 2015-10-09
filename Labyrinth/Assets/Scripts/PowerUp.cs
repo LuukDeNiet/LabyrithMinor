@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour {
 
-	public GameObject other;
+	public GameObject ball;
 
 	void Start(){
 
@@ -28,8 +28,17 @@ public class PowerUp : MonoBehaviour {
 
 	void Powerup(){
 
-	
-		other.GetComponent<Rigidbody>().AddForce(new Vector3 (0,0,-500));
+		//add force in oppsite direction
+		//ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
+
+		//snelheid verdubbelaar
+		//ball.GetComponent<NieuwRotatieScript>().moveSpeed = ball.GetComponent<NieuwRotatieScript>().moveSpeed * 2.0f;
+
+		//inverse controls
+		//ball.GetComponent<NieuwRotatieScript>().inverse = -1.0f;
+
+		
+
 	}
 
 
