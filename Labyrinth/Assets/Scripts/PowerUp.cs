@@ -4,6 +4,7 @@ using System.Collections;
 public class PowerUp : MonoBehaviour {
 
 	public GameObject ball;
+	public int special;
 
 	void Start(){
 
@@ -28,16 +29,24 @@ public class PowerUp : MonoBehaviour {
 
 	void Powerup(){
 
-		//add force in oppsite direction
-		//ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
-
-		//snelheid verdubbelaar
-		//ball.GetComponent<NieuwRotatieScript>().moveSpeed = ball.GetComponent<NieuwRotatieScript>().moveSpeed * 2.0f;
-
-		//inverse controls
-		//ball.GetComponent<NieuwRotatieScript>().inverse = -1.0f;
-
-		
+		switch (special)
+		{
+			case 1:
+			
+				//add force in oppsite direction
+				ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
+				break;
+			
+			case 2:
+				//snelheid verdubbelaar
+				//ball.GetComponent<NieuwRotatieScript>().moveSpeed = ball.GetComponent<NieuwRotatieScript>().moveSpeed * 2.0f;
+				break;
+	
+			case 3:
+				//inverse controls
+				//ball.GetComponent<NieuwRotatieScript>().inverse = -1.0f;
+				break;
+		}
 
 	}
 

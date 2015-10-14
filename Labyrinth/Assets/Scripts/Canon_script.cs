@@ -13,7 +13,7 @@ public class Canon_script : MonoBehaviour {
 	
 		InvokeRepeating("Fire", 1, 5f);
 		canon_position = transform.position;
-		canon_position.y = canon_position.y + 2f;
+		canon_position.y = canon_position.y + 1f;
 		hoek = transform.rotation.eulerAngles;
 		yhoek = hoek.y*Mathf.PI/180f;
 	}
