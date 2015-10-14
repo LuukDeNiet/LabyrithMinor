@@ -14,6 +14,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	public Rigidbody ball;
 	public Rigidbody gameCamera;
+
+	public float inverse;
 	
 
 	// Use this for initialization
@@ -22,6 +24,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 		if (moveSpeed == 0) {
 			moveSpeed = 250.0f;
 		}
+		inverse = 1.0f;
+
 	}
 	
 	// Update is called once per frame
@@ -35,11 +39,15 @@ public class NieuwRotatieScript : MonoBehaviour {
 		
 		} else {
 
+
 			moveX = Input.acceleration.x;
 			moveZ = Input.acceleration.y;
 			moveVector = new Vector3 (moveX, 0.0f, moveZ) * 5.0f;
 
 		}
+
+		ball.AddForce (moveVector * moveSpeed * Time.deltaTime * inverse);
+
 
 		ball.AddForce (moveVector * moveSpeed * Time.deltaTime);
 		
@@ -47,9 +55,15 @@ public class NieuwRotatieScript : MonoBehaviour {
 		rotateX = moveZ * -7.0f;
 		
 		// vector3.right = x as, vector3.up = z as
+
 		gameCamera.MoveRotation (Quaternion.AngleAxis (rotateX, Vector3.right) * Quaternion.AngleAxis (rotateZ, Vector3.forward));
 
 
+
+		gameCamera.MoveRotation(Quaternion.AngleAxis(rotateX, Vector3.right * inverse ) *  Quaternion.AngleAxis(rotateZ, Vector3.forward * inverse));
+
 		
 	}
+
+	
 }
