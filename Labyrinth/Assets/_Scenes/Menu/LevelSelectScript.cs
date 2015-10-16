@@ -8,12 +8,10 @@ public class LevelSelectScript : MonoBehaviour {
 
 	public Canvas tutorialsSelectMenu;
 	public Canvas campaignSelectMenu;
-	
+	public Canvas helpMenu;
 	public Button tutorialsText;
 	public Button campaignText;
-	public Button backText;
-
-	public Button levelBackText;
+	public Button helpText;
 
 	public Button tutorial1;
 	public Button tutorial2;
@@ -26,12 +24,11 @@ public class LevelSelectScript : MonoBehaviour {
 		SelectMenu = SelectMenu.GetComponent<Canvas>();
 		tutorialsSelectMenu = tutorialsSelectMenu.GetComponent<Canvas>();
 		campaignSelectMenu = campaignSelectMenu.GetComponent<Canvas>();
+		helpMenu = helpMenu.GetComponent<Canvas>();
 
 		tutorialsText = tutorialsText.GetComponent<Button>();
 		campaignText = campaignText.GetComponent<Button>();
-		backText = backText.GetComponent<Button>();
-
-		levelBackText = levelBackText.GetComponent<Button>();
+		helpText = helpText.GetComponent<Button>();
 
 		tutorial1 = tutorial1.GetComponent<Button>();
 		tutorial2 = tutorial2.GetComponent<Button>();
@@ -41,7 +38,7 @@ public class LevelSelectScript : MonoBehaviour {
 		//buttons
 		tutorialsText.enabled = true;
 		campaignText.enabled = true;
-		backText.enabled = true;
+		helpText.enabled = true;
 
 		tutorial1.enabled = false;
 		tutorial2.enabled = false;
@@ -52,6 +49,7 @@ public class LevelSelectScript : MonoBehaviour {
 		SelectMenu.enabled = true;
 		tutorialsSelectMenu.enabled = false;
 		campaignSelectMenu.enabled = false;
+		helpMenu.enabled = false;
 
 	}
 
@@ -60,7 +58,6 @@ public class LevelSelectScript : MonoBehaviour {
 		SelectMenu.enabled = false;
 		tutorialsText.enabled = false;
 		campaignText.enabled = false;
-		backText.enabled = false;
 
 		tutorialsSelectMenu.enabled = true;
 		
@@ -72,35 +69,12 @@ public class LevelSelectScript : MonoBehaviour {
 
 	public void CampaingPress()
 	{
-		SelectMenu.enabled = false;
-		tutorialsText.enabled = false;
-		campaignText.enabled = false;
-		backText.enabled = false;
-
-		campaignSelectMenu.enabled = true;
-
 
 	}
 
-	public void levelBackPress()
+	public void HelpPress()
 	{
-		tutorial1.enabled = false;
-		tutorial2.enabled = false;
-		tutorial3.enabled = false;
-		tutorial4.enabled = false;
 
-		tutorialsText.enabled = true;
-		campaignText.enabled = true;
-		backText.enabled = true;
-		
-		SelectMenu.enabled = true;
-		tutorialsSelectMenu.enabled = false;
-		campaignSelectMenu.enabled = false;
-	}
-
-	public void backPress()
-	{
-		Application.LoadLevel(0);
 	}
 
 	public void Tutorial1Press()
