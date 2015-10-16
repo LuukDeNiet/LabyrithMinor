@@ -20,9 +20,16 @@ public class LevelSelectScript : MonoBehaviour {
 	public Button tutorial3;
 	public Button tutorial4;
 
+	public static int Highscore;
+	public static bool Tut1Allowed = true; 
+	public static bool Tut2Allowed = false; 
+	public static bool Tut3Allowed = false; 
+	public static bool Tut4Allowed = false; 
+
 	// Use this for initialization
 	void Start () 
 	{
+
 		SelectMenu = SelectMenu.GetComponent<Canvas>();
 		tutorialsSelectMenu = tutorialsSelectMenu.GetComponent<Canvas>();
 		campaignSelectMenu = campaignSelectMenu.GetComponent<Canvas>();
@@ -53,6 +60,8 @@ public class LevelSelectScript : MonoBehaviour {
 		tutorialsSelectMenu.enabled = false;
 		campaignSelectMenu.enabled = false;
 
+		Debug.Log("Tut2Allowed: " + Tut2Allowed);
+		Debug.Log("Tut3Allowed: " + Tut3Allowed);
 	}
 
 	public void TutorialsPress()
@@ -106,23 +115,36 @@ public class LevelSelectScript : MonoBehaviour {
 
 	public void Tutorial1Press()
 	{
+		if(Tut1Allowed)
+		{
 		Application.LoadLevel(2);
+		}
 	}
 
 	public void Tutorial2Press()
 	{
+		if(Tut2Allowed)
+		{
 		Application.LoadLevel(3);
+		}
 	}
 
 	public void Tutorial3Press()
 	{
+		if(Tut3Allowed)
+		{
 		Application.LoadLevel(4);
+		}
 	}
 
 	public void Tutorial4Press()
 	{
+		if(Tut4Allowed)
+		{
 		Application.LoadLevel(5);
+		}	
 	}
 	
 	
 }
+	

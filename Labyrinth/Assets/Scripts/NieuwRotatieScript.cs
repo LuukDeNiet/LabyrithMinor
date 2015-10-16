@@ -92,7 +92,23 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag ("Finish")) {
-			Application.LoadLevel(1);
+			Application.LoadLevel(Application.loadedLevel + 1);
+
+			if(Application.loadedLevel + 1 == 3)
+			{
+				LevelSelectScript.Tut2Allowed = true;
+			}
+
+			if(Application.loadedLevel + 1 == 4)
+			{
+				LevelSelectScript.Tut3Allowed = true;
+			}
+
+			if(Application.loadedLevel + 1 == 5)
+			{
+				LevelSelectScript.Tut4Allowed = true;
+			}
+
 		}
 
 	}
