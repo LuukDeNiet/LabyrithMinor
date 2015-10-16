@@ -96,6 +96,7 @@ public class LevelSelectScript : MonoBehaviour {
 		SelectMenu.enabled = true;
 		tutorialsSelectMenu.enabled = false;
 		campaignSelectMenu.enabled = false;
+		Application.LoadLevel("LevelSelect");
 	}
 
 	public void backPress()
