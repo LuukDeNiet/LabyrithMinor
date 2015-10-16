@@ -17,7 +17,7 @@ public class bullt_script : MonoBehaviour {
 
 			if(other.gameObject.tag == "Player")
 			{
-				//reset en levens -1 of terug naar start
+				Application.LoadLevel(Application.loadedLevel);
 			}
 
 	}
