@@ -5,16 +5,6 @@ public class bullt_script : MonoBehaviour {
 
 	public GameObject ball;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnCollisionEnter(Collision other) 
 	{
 	
@@ -27,7 +17,7 @@ public class bullt_script : MonoBehaviour {
 
 			if(other.gameObject.tag == "Player")
 			{
-				//reset en levens -1 of terug naar start
+				Application.LoadLevel(Application.loadedLevel);
 			}
 
 	}
