@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class NieuwRotatieScript : MonoBehaviour {
 
 	public float moveZ; 
@@ -32,6 +33,10 @@ public class NieuwRotatieScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (transform.position.y <= -5.0f) {
+			Application.LoadLevel(Application.loadedLevel);
+		}
+
 		moveVector = Vector3.zero;
 		if ((Input.acceleration.x == 0) && (Input.acceleration.y == 0) && (Input.acceleration.z == 0)) {
 
@@ -84,6 +89,14 @@ public class NieuwRotatieScript : MonoBehaviour {
 			Time.timeScale = 0;
 		}
 	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag ("Finish")) {
+			Application.LoadLevel(1);
+		}
+
+	}
+
 
 	
 }
