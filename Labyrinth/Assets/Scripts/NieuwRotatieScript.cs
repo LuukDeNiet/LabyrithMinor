@@ -49,14 +49,14 @@ public class NieuwRotatieScript : MonoBehaviour {
 		ball.AddForce (moveVector * moveSpeed * Time.deltaTime * inverse);
 
 
-		ball.AddForce (moveVector * moveSpeed * Time.deltaTime);
+		//ball.AddForce (moveVector * moveSpeed * Time.deltaTime);
 		
 		rotateZ = moveX * 7.0f;
 		rotateX = moveZ * -7.0f;
 		
 		// vector3.right = x as, vector3.up = z as
 
-		gameCamera.MoveRotation (Quaternion.AngleAxis (rotateX, Vector3.right) * Quaternion.AngleAxis (rotateZ, Vector3.forward));
+		//gameCamera.MoveRotation (Quaternion.AngleAxis (rotateX, Vector3.right) * Quaternion.AngleAxis (rotateZ, Vector3.forward));
 
 
 
