@@ -4,6 +4,8 @@ using System.Collections;
 public class VeerScript : MonoBehaviour {
 
 	public GameObject ball;
+	public AudioClip boing;
+	
 
 
 	void Start(){
@@ -26,6 +28,7 @@ public class VeerScript : MonoBehaviour {
 		{
 			//gameObject.SetActive(false);
 			Powerup();
+			GetComponent<AudioSource>().PlayOneShot(boing);
 		}
 	}
 

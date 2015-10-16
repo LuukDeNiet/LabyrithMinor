@@ -27,6 +27,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 		inverse = 1.0f;
 
 	}
+
+
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -63,6 +65,24 @@ public class NieuwRotatieScript : MonoBehaviour {
 		gameCamera.MoveRotation(Quaternion.AngleAxis(rotateX, Vector3.right * inverse ) *  Quaternion.AngleAxis(rotateZ, Vector3.forward * inverse));
 
 		
+	}
+
+	void Update()
+	{
+		if (Input.GetKeyDown("space"))
+            TogglePause();
+	}
+
+	void TogglePause()
+	{
+		if (Time.timeScale == 0)
+		{
+			Time.timeScale = 1;
+		}
+		else
+		{
+			Time.timeScale = 0;
+		}
 	}
 
 	
