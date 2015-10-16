@@ -6,13 +6,18 @@ public class VeerScript : MonoBehaviour {
 	public GameObject ball;
 
 	public AudioClip boing;
+	private Rigidbody rb;
 	
 
 
 	void Start(){
 
-	//Rigidbody rb = other.GetComponent<Rigidbody>();
+		rb = ball.GetComponent<Rigidbody> ();
 
+	}
+
+	void FixedUpdate() {
+		rb.velocity = new Vector3 (rb.velocity.x, 0.0f, rb.velocity.z);
 	}
 
 
@@ -36,8 +41,11 @@ public class VeerScript : MonoBehaviour {
 	void Powerup()
 	{
 		//add force in oppsite direction
-		ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
-			
+		//ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
+		rb.AddForce (new Vector3 (rb.velocity.x, 0.0f, rb.velocity.z) * -250.0f);
+
+
+
 	}
 
 
