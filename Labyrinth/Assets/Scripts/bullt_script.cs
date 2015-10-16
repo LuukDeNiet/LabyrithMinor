@@ -35,6 +35,7 @@ public class bullt_script : MonoBehaviour {
 	}
 
 	void restart() {
+		ball.SetActive (true);
 		Application.LoadLevel (Application.loadedLevel);
 	}
 }
