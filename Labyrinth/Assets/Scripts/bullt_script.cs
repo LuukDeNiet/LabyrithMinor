@@ -5,16 +5,6 @@ public class bullt_script : MonoBehaviour {
 
 	public GameObject ball;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnCollisionEnter(Collision other) 
 	{
 	
