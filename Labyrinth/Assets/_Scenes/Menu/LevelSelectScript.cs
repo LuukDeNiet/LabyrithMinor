@@ -20,11 +20,25 @@ public class LevelSelectScript : MonoBehaviour {
 	public Button tutorial3;
 	public Button tutorial4;
 
+
+	public Text tut2Text;
+	public Text tut3Text;
+	public Text tut4Text;
+
+	
+	public Image tut2Image;
+	public Image tut3Image;
+	public Image tut4Image;
+
 	public static int Highscore;
-	public static bool Tut1Allowed = true; 
 	public static bool Tut2Allowed = false; 
 	public static bool Tut3Allowed = false; 
 	public static bool Tut4Allowed = false; 
+
+	//public static bool Tut1Interact = tutorial1.interactable;
+	//public static bool Tut2Interact = tutorial2.interactable;
+	//public static bool Tut3Interact = tutorial3.interactable;
+	//public static bool Tut4Interact = tutorial4.interactable;
 
 	// Use this for initialization
 	void Start () 
@@ -45,23 +59,36 @@ public class LevelSelectScript : MonoBehaviour {
 		tutorial3 = tutorial3.GetComponent<Button>();
 		tutorial4 = tutorial4.GetComponent<Button>();
 
+		
+		tut2Text = tut2Text.GetComponent<Text>();
+		tut3Text = tut3Text.GetComponent<Text>();
+		tut4Text = tut4Text.GetComponent<Text>();
+
+		tut2Image = tut2Image.GetComponent<Image>();
+		tut3Image = tut3Image.GetComponent<Image>();
+		tut4Image = tut4Image.GetComponent<Image>();
+
+
 		//buttons
 		tutorialsText.enabled = true;
 		campaignText.enabled = true;
 		backText.enabled = true;
 
-		tutorial1.enabled = false;
-		tutorial2.enabled = false;
-		tutorial3.enabled = false;
-		tutorial4.enabled = false;
+		tutorial1.enabled = false;	
+		tutorial2.enabled = false;	
+		tutorial3.enabled = false;	
+		tutorial4.enabled = false;	
+
+
+		tutorial2.interactable = false; tut2Text.text = "";
+		tutorial3.interactable = false;	tut3Text.text = "";
+		tutorial4.interactable = false; tut4Text.text = "";
 
 		//canvasses
 		SelectMenu.enabled = true;
 		tutorialsSelectMenu.enabled = false;
 		campaignSelectMenu.enabled = false;
 
-		Debug.Log("Tut2Allowed: " + Tut2Allowed);
-		Debug.Log("Tut3Allowed: " + Tut3Allowed);
 	}
 
 	public void TutorialsPress()
@@ -115,10 +142,7 @@ public class LevelSelectScript : MonoBehaviour {
 
 	public void Tutorial1Press()
 	{
-		if(Tut1Allowed)
-		{
 		Application.LoadLevel(2);
-		}
 	}
 
 	public void Tutorial2Press()
@@ -144,7 +168,30 @@ public class LevelSelectScript : MonoBehaviour {
 		Application.LoadLevel(5);
 		}	
 	}
+
+	public static void AllowTut2()
+	{
+		Tut2Allowed = true;
+	}
+
+	public static void AllowTut3()
+	{
+		Tut3Allowed = true;
+		//Tut3Interact():
+	}
+
+	public static void AllowTut4()
+	{
+		Tut4Allowed = true;
+		//Tut4Interact = true;
+	}
 	
+	void Update()
+	{	
+		if(Tut2Allowed){tutorial2.interactable = true; tut2Text.text = "Tutorial 2"; tut2Image.enabled = false;}
+		if(Tut3Allowed){tutorial3.interactable = true; tut3Text.text = "Tutorial 3"; tut3Image.enabled = false;}
+		if(Tut4Allowed){tutorial4.interactable = true; tut4Text.text = "Tutorial 4"; tut4Image.enabled = false;}
+	}
 	
 }
 	
