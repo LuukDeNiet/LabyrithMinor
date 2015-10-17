@@ -26,7 +26,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 			moveSpeed = 250.0f;
 		}
 		inverse = 1.0f;
-
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
 
 
@@ -125,6 +125,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 			{
 				LevelSelectScript.Level4Allowed = true;
 				Debug.Log("Level4Allowed: " + LevelSelectScript.Level4Allowed);
+
+				
 			}
 		}
 
