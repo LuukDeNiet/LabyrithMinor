@@ -96,17 +96,17 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 			if(Application.loadedLevel + 1 == 3)
 			{
-				LevelSelectScript.Tut2Allowed = true;
+				LevelSelectScript.AllowTut2();
 			}
 
 			if(Application.loadedLevel + 1 == 4)
 			{
-				LevelSelectScript.Tut3Allowed = true;
+				LevelSelectScript.AllowTut3();
 			}
 
 			if(Application.loadedLevel + 1 == 5)
 			{
-				LevelSelectScript.Tut4Allowed = true;
+				LevelSelectScript.AllowTut4();
 			}
 
 		}

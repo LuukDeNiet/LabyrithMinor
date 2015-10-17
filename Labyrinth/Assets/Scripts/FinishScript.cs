@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -10,14 +10,12 @@ public class FinishScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		curLevel = Application.loadedLevel;
+		curLevel = Application.loadedLevel - 1;
 		curLevelText.text = "Level: " + curLevel;
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag("Finish")) {
-			curLevel ++;
-			Debug.Log(curLevel);
+		if (other.gameObject.CompareTag("LastFinish")) {
 			Application.LoadLevel(1);
 		}
 
