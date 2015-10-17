@@ -35,6 +35,7 @@ public class VeerScript : MonoBehaviour {
 			//gameObject.SetActive(false);
 			Powerup();
 			GetComponent<AudioSource>().PlayOneShot(boing);
+			Invoke("DestroyVeer", 0.5f);
 		}
 	}
 
@@ -42,11 +43,16 @@ public class VeerScript : MonoBehaviour {
 	{
 		//add force in oppsite direction
 		//ball.GetComponent<Rigidbody>().AddForce(ball.GetComponent<Rigidbody>().velocity * -250f);
-		rb.AddForce (new Vector3 (rb.velocity.x, 0.0f, rb.velocity.z) * -250.0f);
+		rb.AddForce (new Vector3 (rb.velocity.x, 0.0f, rb.velocity.z) * -175.0f);
 
 
 
 	}
+
+	void DestroyVeer() {
+		Destroy (this.gameObject);
+	}
+
 
 
 }
