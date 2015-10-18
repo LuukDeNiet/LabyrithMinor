@@ -48,6 +48,8 @@ public class LevelSelectScript : MonoBehaviour {
 	public Image level5Image; public Image score5Image; public Text score5Text;
 	public Image level6Image; public Image score6Image; public Text score6Text;
 
+	public Text HighScoreTotal;
+
 	public static bool Tut2Allowed = false; 
 	public static bool Tut3Allowed = false; 
 	public static bool Tut4Allowed = false; 
@@ -60,11 +62,17 @@ public class LevelSelectScript : MonoBehaviour {
 
 	void Awake()
 	{
-		
+
 		score1Text.text = PlayerPrefs.GetInt("ScoreLevel 1").ToString();
 		score2Text.text = PlayerPrefs.GetInt("ScoreLevel 2").ToString();
 		score3Text.text = PlayerPrefs.GetInt("ScoreLevel 3").ToString();
 		score4Text.text = PlayerPrefs.GetInt("ScoreLevel 4").ToString();
+		HighScoreTotal.text =(PlayerPrefs.GetInt("ScoreLevel 1")
+							 +PlayerPrefs.GetInt("ScoreLevel 2")
+							 +PlayerPrefs.GetInt("ScoreLevel 3")
+							 +PlayerPrefs.GetInt("ScoreLevel 4")
+							 +PlayerPrefs.GetInt("ScoreLevel 5")
+							 +PlayerPrefs.GetInt("ScoreLevel 6")).ToString();
 
 		if(PlayerPrefs.GetInt("Boolean Level 2") == 1)
 		Level2Allowed = true;
@@ -79,7 +87,7 @@ public class LevelSelectScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Debug.Log(PlayerPrefs.GetInt("PlayerScore"));
+		HighScoreTotal = HighScoreTotal.GetComponent<Text>();
 		
 
 		SelectMenu = SelectMenu.GetComponent<Canvas>();
@@ -291,11 +299,12 @@ public class LevelSelectScript : MonoBehaviour {
 //Allowances
 	
 	void Update()
-	{	
+	{	//TutorialSettings
 		if(Tut2Allowed){tutorial2.interactable = true; tut2Text.text = "Reversed"; tut2Image.enabled = false;}
 		if(Tut3Allowed){tutorial3.interactable = true; tut3Text.text = "Cannons"; tut3Image.enabled = false;}
 		if(Tut4Allowed){tutorial4.interactable = true; tut4Text.text = "Springs"; tut4Image.enabled = false;}
 
+		//LevelSettings
 		if(Level2Allowed)
 		{level2.interactable = true; level2Text.text = "Level 2"; level2Image.enabled = false; score2Image.enabled = true;
 		score2Text.text = PlayerPrefs.GetInt("ScoreLevel 2").ToString();}
