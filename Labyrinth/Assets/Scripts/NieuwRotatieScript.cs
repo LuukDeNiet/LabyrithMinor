@@ -133,7 +133,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.gameObject.CompareTag ("Finish") && Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1)) 
+		if (other.gameObject.CompareTag ("Finish") && Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1) && Application.loadedLevel != 5) 
 		{
 			Application.LoadLevel(Application.loadedLevel + 1);
 
@@ -184,7 +184,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 			
 
 
-		}else if(other.gameObject.CompareTag ("Finish") && !Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1))
+		}else if(other.gameObject.CompareTag("Finish") && !Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1))
 		{
 			Application.LoadLevel(1);
 			if(Application.loadedLevel == 9)
@@ -195,6 +195,9 @@ public class NieuwRotatieScript : MonoBehaviour {
 				}
 			}
 
+		}else if(other.gameObject.CompareTag("Finish") && Application.loadedLevel == 5)
+		{
+			Application.LoadLevel(1);
 		}
 
 	}
