@@ -57,6 +57,18 @@ public class LevelSelectScript : MonoBehaviour {
 	public static bool Level5Allowed = false;
 	public static bool Level6Allowed = false;
 
+	void Awake()
+	{
+		if(PlayerPrefs.GetInt("Boolean Level 2") == 1)
+		Level2Allowed = true;
+
+		if(PlayerPrefs.GetInt("Boolean Level 3") == 1)
+		Level3Allowed = true;
+
+		if(PlayerPrefs.GetInt("Boolean level 4") == 1)
+		Level4Allowed = true;
+	}
+
 	// Use this for initialization
 	void Start () 
 	{

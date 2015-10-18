@@ -53,8 +53,6 @@ public class NieuwRotatieScript : MonoBehaviour {
 		{
 			Highscore = 0;
 		}
-
-		Debug.Log(Highscore);
 		
 
 		if (transform.position.y <= -5.0f) {
@@ -107,12 +105,15 @@ public class NieuwRotatieScript : MonoBehaviour {
             	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 1");
             }else 
             if(Application.loadedLevel == 7){
+            	PlayerPrefs.SetInt("Boolean Level 2", 1);
             	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 2");
             }else
             if(Application.loadedLevel == 8){
+            	PlayerPrefs.SetInt("Boolean Level 3", 1);
             	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 3");
             }else
             if(Application.loadedLevel == 9){
+            	PlayerPrefs.SetInt("Boolean level 4", 1);
 				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 4");
 			}
 	}
