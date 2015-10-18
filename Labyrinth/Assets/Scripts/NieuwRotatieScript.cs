@@ -22,7 +22,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 	public Text scoreText;
 	public Text highScoreText;
 
-	public int Increaser;
+	private int Increaser;
 	public int Highscore;
 
 	// Use this for initialization
@@ -34,7 +34,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 			moveSpeed = 250.0f;
 		}
 		inverse = 1.0f;
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		
+		Screen.sleepTimeout = SleepTimeout.NeverSleep; //Device Never Sleeps
 		
 		Increaser = 0;
 
@@ -132,7 +133,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.gameObject.CompareTag ("Finish")) 
+		if (other.gameObject.CompareTag ("Finish") && Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1)) 
 		{
 			Application.LoadLevel(Application.loadedLevel + 1);
 
@@ -180,6 +181,12 @@ public class NieuwRotatieScript : MonoBehaviour {
 				}
 			}
 
+			
+
+
+		}else if(other.gameObject.CompareTag ("Finish") && !Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1))
+		{
+			Application.LoadLevel(1);
 			if(Application.loadedLevel == 9)
 			{
 				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 4"))
@@ -187,7 +194,6 @@ public class NieuwRotatieScript : MonoBehaviour {
 				PlayerPrefs.SetInt("ScoreLevel 4", Highscore);
 				}
 			}
-
 
 		}
 

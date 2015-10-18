@@ -41,11 +41,12 @@ public class LevelSelectScript : MonoBehaviour {
 	public Image tut3Image;
 	public Image tut4Image;
 
-	public Image level2Image;
-	public Image level3Image;
-	public Image level4Image;
-	public Image level5Image;
-	public Image level6Image;
+														public Text score1Text;
+	public Image level2Image; public Image score2Image; public Text score2Text;
+	public Image level3Image; public Image score3Image; public Text score3Text;
+	public Image level4Image; public Image score4Image; public Text score4Text;
+	public Image level5Image; public Image score5Image; public Text score5Text;
+	public Image level6Image; public Image score6Image; public Text score6Text;
 
 	public static bool Tut2Allowed = false; 
 	public static bool Tut3Allowed = false; 
@@ -59,6 +60,12 @@ public class LevelSelectScript : MonoBehaviour {
 
 	void Awake()
 	{
+		
+		score1Text.text = PlayerPrefs.GetInt("ScoreLevel 1").ToString();
+		score2Text.text = PlayerPrefs.GetInt("ScoreLevel 2").ToString();
+		score3Text.text = PlayerPrefs.GetInt("ScoreLevel 3").ToString();
+		score4Text.text = PlayerPrefs.GetInt("ScoreLevel 4").ToString();
+
 		if(PlayerPrefs.GetInt("Boolean Level 2") == 1)
 		Level2Allowed = true;
 
@@ -111,11 +118,18 @@ public class LevelSelectScript : MonoBehaviour {
 		level5Text = level5Text.GetComponent<Text>();
 		level6Text = level6Text.GetComponent<Text>();
 
-		level2Image = level2Image.GetComponent<Image>();
-		level3Image = level3Image.GetComponent<Image>();
-		level4Image = level4Image.GetComponent<Image>();
-		level5Image = level5Image.GetComponent<Image>();
-		level6Image = level6Image.GetComponent<Image>();
+		level2Image = level2Image.GetComponent<Image>(); score2Image = score2Image.GetComponent<Image>();
+		level3Image = level3Image.GetComponent<Image>(); score3Image = score3Image.GetComponent<Image>();
+		level4Image = level4Image.GetComponent<Image>(); score4Image = score4Image.GetComponent<Image>();
+		level5Image = level5Image.GetComponent<Image>(); score5Image = score5Image.GetComponent<Image>();
+		level6Image = level6Image.GetComponent<Image>(); score6Image = score6Image.GetComponent<Image>();
+
+		score1Text = score1Text.GetComponent<Text>();
+		score2Text = score2Text.GetComponent<Text>();
+		score3Text = score3Text.GetComponent<Text>();
+		score4Text = score4Text.GetComponent<Text>();
+		score5Text = score5Text.GetComponent<Text>();
+		score6Text = score6Text.GetComponent<Text>();
 
 		//buttons
 		tutorialsText.enabled = true;
@@ -134,16 +148,21 @@ public class LevelSelectScript : MonoBehaviour {
 		level5.enabled = false;
 		level6.enabled = false;
 
+		score2Image.enabled = false;
+		score3Image.enabled = false;
+		score4Image.enabled = false;
+		score5Image.enabled = false;
+		score6Image.enabled = false;
 
 		tutorial2.interactable = false; tut2Text.text = "";
 		tutorial3.interactable = false;	tut3Text.text = "";
 		tutorial4.interactable = false; tut4Text.text = "";
 
-		level2.interactable = false; level2Text.text = "";
-		level3.interactable = false; level3Text.text = "";
-		level4.interactable = false; level4Text.text = "";
-		level5.interactable = false; level5Text.text = "";
-		level6.interactable = false; level6Text.text = "";
+		level2.interactable = false; level2Text.text = ""; score2Text.text = "";
+		level3.interactable = false; level3Text.text = ""; score3Text.text = "";
+		level4.interactable = false; level4Text.text = ""; score4Text.text = "";
+		level5.interactable = false; level5Text.text = ""; score5Text.text = "";
+		level6.interactable = false; level6Text.text = ""; score6Text.text = "";
 
 
 		//canvasses
@@ -273,13 +292,19 @@ public class LevelSelectScript : MonoBehaviour {
 	
 	void Update()
 	{	
-		if(Tut2Allowed){tutorial2.interactable = true; tut2Text.text = "Tutorial 2"; tut2Image.enabled = false;}
-		if(Tut3Allowed){tutorial3.interactable = true; tut3Text.text = "Tutorial 3"; tut3Image.enabled = false;}
-		if(Tut4Allowed){tutorial4.interactable = true; tut4Text.text = "Tutorial 4"; tut4Image.enabled = false;}
+		if(Tut2Allowed){tutorial2.interactable = true; tut2Text.text = "Reversed"; tut2Image.enabled = false;}
+		if(Tut3Allowed){tutorial3.interactable = true; tut3Text.text = "Cannons"; tut3Image.enabled = false;}
+		if(Tut4Allowed){tutorial4.interactable = true; tut4Text.text = "Springs"; tut4Image.enabled = false;}
 
-		if(Level2Allowed){level2.interactable = true; level2Text.text = "Level 2"; level2Image.enabled = false;}
-		if(Level3Allowed){level3.interactable = true; level3Text.text = "Level 3"; level3Image.enabled = false;}
-		if(Level4Allowed){level4.interactable = true; level4Text.text = "Level 4"; level4Image.enabled = false;}
+		if(Level2Allowed)
+		{level2.interactable = true; level2Text.text = "Level 2"; level2Image.enabled = false; score2Image.enabled = true;
+		score2Text.text = PlayerPrefs.GetInt("ScoreLevel 2").ToString();}
+		if(Level3Allowed)
+		{level3.interactable = true; level3Text.text = "Level 3"; level3Image.enabled = false; score3Image.enabled = true;
+		score3Text.text = PlayerPrefs.GetInt("ScoreLevel 3").ToString();}
+		if(Level4Allowed)
+		{level4.interactable = true; level4Text.text = "Level 4"; level4Image.enabled = false; score4Image.enabled = true;
+		score4Text.text = PlayerPrefs.GetInt("ScoreLevel 4").ToString();}
 		//if(Level5Allowed){level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false;}
 		//if(Level6Allowed){level6.interactable = true; level6Text.text = "Level 6"; level6Image.enabled = false;}
 
