@@ -296,6 +296,11 @@ public class LevelSelectScript : MonoBehaviour {
 		Application.LoadLevel(9);
 	}
 
+	public void Level5Press()
+	{
+		Application.LoadLevel(10);
+	}
+
 //Allowances
 	
 	void Update()
@@ -314,6 +319,9 @@ public class LevelSelectScript : MonoBehaviour {
 		if(Level4Allowed)
 		{level4.interactable = true; level4Text.text = "Level 4"; level4Image.enabled = false; score4Image.enabled = true;
 		score4Text.text = PlayerPrefs.GetInt("ScoreLevel 4").ToString();}
+		if(Level5Allowed)
+		{level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false; score5Image.enabled = true;
+		score5Text.text = PlayerPrefs.GetInt("ScoreLevel 5").ToString();}
 		//if(Level5Allowed){level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false;}
 		//if(Level6Allowed){level6.interactable = true; level6Text.text = "Level 6"; level6Image.enabled = false;}
 

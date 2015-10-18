@@ -116,6 +116,10 @@ public class NieuwRotatieScript : MonoBehaviour {
             if(Application.loadedLevel == 9){
             	PlayerPrefs.SetInt("Boolean level 4", 1);
 				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 4");
+			}else
+			if(Application.loadedLevel == 10){
+				PlayerPrefs.SetInt("Boolean level 5", 1);
+				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 5");
 			}
 	}
 
@@ -153,6 +157,7 @@ public class NieuwRotatieScript : MonoBehaviour {
 				LevelSelectScript.Tut4Allowed = true;
 			}
 
+
 			//Levels
 			if(Application.loadedLevel + 1 == 7)
 			{
@@ -181,17 +186,26 @@ public class NieuwRotatieScript : MonoBehaviour {
 				}
 			}
 
+			if(Application.loadedLevel + 1 == 10)
+			{
+				LevelSelectScript.Level5Allowed = true;
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 4"))
+				{
+				PlayerPrefs.SetInt("ScoreLevel 4", Highscore);
+				}
+			}
+
 			
 
 
 		}else if(other.gameObject.CompareTag("Finish") && !Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1))
 		{
 			Application.LoadLevel(1);
-			if(Application.loadedLevel == 9)
+			if(Application.loadedLevel == 10)
 			{
-				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 4"))
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 5"))
 				{
-				PlayerPrefs.SetInt("ScoreLevel 4", Highscore);
+				PlayerPrefs.SetInt("ScoreLevel 5", Highscore);
 				}
 			}
 
