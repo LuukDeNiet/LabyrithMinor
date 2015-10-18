@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class NieuwRotatieScript : MonoBehaviour {
@@ -18,21 +19,44 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	public float inverse;
 	
+	public Text scoreText;
+	public Text highScoreText;
+
+	public int Increaser;
+	public int Highscore;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		ball = GetComponent<Rigidbody> ();
-		if (moveSpeed == 0) {
+		if (moveSpeed == 0) 
+		{
 			moveSpeed = 250.0f;
 		}
 		inverse = 1.0f;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		
+		Increaser = 0;
+
+		scoreText = scoreText.GetComponent<Text>();
+		highScoreText = highScoreText.GetComponent<Text>();
+		
 	}
 
 
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		Increaser++;
+		Highscore = 10000 - Increaser;
+		if(Highscore < 0)
+		{
+			Highscore = 0;
+		}
+
+		Debug.Log(Highscore);
+		
+
 		if (transform.position.y <= -5.0f) {
 			Application.LoadLevel(Application.loadedLevel);
 		}
@@ -74,8 +98,23 @@ public class NieuwRotatieScript : MonoBehaviour {
 
 	void Update()
 	{
+
 		if (Input.GetKeyDown("space"))
             TogglePause();
+
+            scoreText.text = "Score: " + Highscore;
+            if(Application.loadedLevel == 6){
+            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 1");
+            }else 
+            if(Application.loadedLevel == 7){
+            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 2");
+            }else
+            if(Application.loadedLevel == 8){
+            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 3");
+            }else
+            if(Application.loadedLevel == 9){
+				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 4");
+			}
 	}
 
 	void TogglePause()
@@ -90,10 +129,13 @@ public class NieuwRotatieScript : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag ("Finish")) {
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.gameObject.CompareTag ("Finish")) 
+		{
 			Application.LoadLevel(Application.loadedLevel + 1);
 
+			//Tutorials
 			if(Application.loadedLevel + 1 == 3)
 			{
 				LevelSelectScript.Tut2Allowed = true;
@@ -109,25 +151,43 @@ public class NieuwRotatieScript : MonoBehaviour {
 				LevelSelectScript.Tut4Allowed = true;
 			}
 
+			//Levels
 			if(Application.loadedLevel + 1 == 7)
 			{
 				LevelSelectScript.Level2Allowed = true;
-				Debug.Log("Level2Allowed: " + LevelSelectScript.Level2Allowed);
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 1"))
+				{
+				PlayerPrefs.SetInt("ScoreLevel 1", Highscore);
+				}
 			}
 
 			if(Application.loadedLevel + 1 == 8)
 			{
 				LevelSelectScript.Level3Allowed = true;
-				Debug.Log("Level3Allowed: " + LevelSelectScript.Level3Allowed);
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 2"))
+				{
+				PlayerPrefs.SetInt("ScoreLevel 2", Highscore);
+				}
 			}
 			
 			if(Application.loadedLevel + 1 == 9)
 			{
 				LevelSelectScript.Level4Allowed = true;
-				Debug.Log("Level4Allowed: " + LevelSelectScript.Level4Allowed);
-
-				
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 3"))
+				{
+				PlayerPrefs.SetInt("ScoreLevel 3", Highscore);
+				}
 			}
+
+			if(Application.loadedLevel == 9)
+			{
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 4"))
+				{
+				PlayerPrefs.SetInt("ScoreLevel 4", Highscore);
+				}
+			}
+
+
 		}
 
 	}

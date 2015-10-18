@@ -47,7 +47,6 @@ public class LevelSelectScript : MonoBehaviour {
 	public Image level5Image;
 	public Image level6Image;
 
-	public static int Highscore;
 	public static bool Tut2Allowed = false; 
 	public static bool Tut3Allowed = false; 
 	public static bool Tut4Allowed = false; 
@@ -61,6 +60,8 @@ public class LevelSelectScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		Debug.Log(PlayerPrefs.GetInt("PlayerScore"));
+		
 
 		SelectMenu = SelectMenu.GetComponent<Canvas>();
 		tutorialsSelectMenu = tutorialsSelectMenu.GetComponent<Canvas>();
@@ -269,6 +270,8 @@ public class LevelSelectScript : MonoBehaviour {
 		if(Level4Allowed){level4.interactable = true; level4Text.text = "Level 4"; level4Image.enabled = false;}
 		//if(Level5Allowed){level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false;}
 		//if(Level6Allowed){level6.interactable = true; level6Text.text = "Level 6"; level6Image.enabled = false;}
+
+
 	}
 	
 }
