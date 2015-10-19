@@ -82,11 +82,19 @@ public class LevelSelectScript : MonoBehaviour {
 
 		if(PlayerPrefs.GetInt("Boolean level 4") == 1)
 		Level4Allowed = true;
+
+		if(PlayerPrefs.GetInt("Boolean level 5") == 1)
+			Level5Allowed = true;
+
+		if(PlayerPrefs.GetInt("Boolean level 6") == 1)
+			Level6Allowed = true;
 	}
 
 	// Use this for initialization
 	void Start () 
 	{
+
+		//PlayerPrefs.DeleteAll (); //Niet aanraken aub
 		HighScoreTotal = HighScoreTotal.GetComponent<Text>();
 		
 
@@ -301,6 +309,11 @@ public class LevelSelectScript : MonoBehaviour {
 		Application.LoadLevel(10);
 	}
 
+	public void Level6Press()
+	{
+		Application.LoadLevel(11);
+	}
+
 //Allowances
 	
 	void Update()
@@ -322,8 +335,10 @@ public class LevelSelectScript : MonoBehaviour {
 		if(Level5Allowed)
 		{level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false; score5Image.enabled = true;
 		score5Text.text = PlayerPrefs.GetInt("ScoreLevel 5").ToString();}
-		//if(Level5Allowed){level5.interactable = true; level5Text.text = "Level 5"; level5Image.enabled = false;}
-		//if(Level6Allowed){level6.interactable = true; level6Text.text = "Level 6"; level6Image.enabled = false;}
+		if(Level6Allowed)
+		{level6.interactable = true; level6Text.text = "Level 6"; level6Image.enabled = false; score6Image.enabled = true;
+			score6Text.text = PlayerPrefs.GetInt("ScoreLevel 6").ToString();}
+
 
 
 	}

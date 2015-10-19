@@ -99,29 +99,33 @@ public class NieuwRotatieScript : MonoBehaviour {
 	void Update()
 	{
 
-		if (Input.GetKeyDown("space"))
-            TogglePause();
+		if (Input.GetKeyDown ("space"))
+			TogglePause ();
 
-            scoreText.text = "Score: " + Highscore;
-            if(Application.loadedLevel == 6){
-            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 1");
-            }else 
-            if(Application.loadedLevel == 7){
-            	PlayerPrefs.SetInt("Boolean Level 2", 1);
-            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 2");
-            }else
-            if(Application.loadedLevel == 8){
-            	PlayerPrefs.SetInt("Boolean Level 3", 1);
-            	highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 3");
-            }else
-            if(Application.loadedLevel == 9){
-            	PlayerPrefs.SetInt("Boolean level 4", 1);
-				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 4");
-			}else
-			if(Application.loadedLevel == 10){
-				PlayerPrefs.SetInt("Boolean level 5", 1);
-				highScoreText.text = "Highscore: " + PlayerPrefs.GetInt("ScoreLevel 5");
-			}
+		scoreText.text = "Score: " + Highscore;
+		if (Application.loadedLevel == 6) {
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 1");
+		} else 
+            if (Application.loadedLevel == 7) {
+			PlayerPrefs.SetInt ("Boolean Level 2", 1);
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 2");
+		} else
+            if (Application.loadedLevel == 8) {
+			PlayerPrefs.SetInt ("Boolean Level 3", 1);
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 3");
+		} else
+            if (Application.loadedLevel == 9) {
+			PlayerPrefs.SetInt ("Boolean level 4", 1);
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 4");
+		} else
+			if (Application.loadedLevel == 10) {
+			PlayerPrefs.SetInt ("Boolean level 5", 1);
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 5");
+		} else
+			if (Application.loadedLevel == 11) {
+			PlayerPrefs.SetInt ("Boolean level 6", 1);
+			highScoreText.text = "Highscore: " + PlayerPrefs.GetInt ("ScoreLevel 6");
+		}
 	}
 
 	void TogglePause()
@@ -196,17 +200,25 @@ public class NieuwRotatieScript : MonoBehaviour {
 				}
 			}
 
+			if(Application.loadedLevel + 1 == 11)
+			{
+				LevelSelectScript.Level6Allowed = true;
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 5"))
+				{
+					PlayerPrefs.SetInt("ScoreLevel 5", Highscore);
+				}
+			}
 			
 
 
 		}else if(other.gameObject.CompareTag("Finish") && !Application.CanStreamedLevelBeLoaded(Application.loadedLevel + 1))
 		{
 			Application.LoadLevel(1);
-			if(Application.loadedLevel == 10)
+			if(Application.loadedLevel == 11)
 			{
-				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 5"))
+				if(Highscore > PlayerPrefs.GetInt("ScoreLevel 6"))
 				{
-				PlayerPrefs.SetInt("ScoreLevel 5", Highscore);
+				PlayerPrefs.SetInt("ScoreLevel 6", Highscore);
 				}
 			}
 
