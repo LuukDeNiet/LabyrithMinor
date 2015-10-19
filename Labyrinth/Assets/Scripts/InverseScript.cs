@@ -5,9 +5,11 @@ public class InverseScript : MonoBehaviour {
 
 	public GameObject ball;
 
+
 	// Use this for initialization
 	void Start () {
 	
+
 	}
 	
 	// Update is called once per frame
@@ -29,9 +31,13 @@ public class InverseScript : MonoBehaviour {
 
 	void Powerup()
 	{
-		//inverse is GO!
-		ball.GetComponent<NieuwRotatieScript>().inverse = -1.0f;
-
-			
+		if (ball.GetComponent<NieuwRotatieScript>().inverse > 0.0f)
+		{
+			ball.GetComponent<NieuwRotatieScript>().inverse = -1.0f;
+		}
+		else
+		{
+			ball.GetComponent<NieuwRotatieScript>().inverse = 1.0f;
+		}	
 	}
 }
