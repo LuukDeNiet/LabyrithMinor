@@ -35,7 +35,7 @@ public class VeerScript : MonoBehaviour {
 			//gameObject.SetActive(false);
 			Powerup();
 			GetComponent<AudioSource>().PlayOneShot(boing);
-			Invoke("DestroyVeer", 0.5f);
+			Invoke("DestroyVeer", 1.0f);
 		}
 	}
 
