@@ -1,0 +1,39 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="Menuscript">
+			<method name="StartLevel"/>
+			<method name="ExitGame"/>
+			<method name="NoPress"/>
+			<method name="ExitPress"/>
+		</type>
+		<type fullname="LevelSelectScript">
+			<method name="Tutorial2Press"/>
+			<method name="levelBackPress"/>
+			<method name="Tutorial1Press"/>
+			<method name="Tutorial4Press"/>
+			<method name="Tutorial3Press"/>
+			<method name="backPress"/>
+			<method name="levelBackPress"/>
+			<method name="TutorialsPress"/>
+			<method name="CampaingPress"/>
+			<method name="Level1Press"/>
+			<method name="Level6Press"/>
+			<method name="Level5Press"/>
+			<method name="Level4Press"/>
+			<method name="Level2Press"/>
+			<method name="Level3Press"/>
+		</type>
+		<type fullname="backButton">
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+			<method name="onClick"/>
+		</type>
+	</assembly>
+</linker>
