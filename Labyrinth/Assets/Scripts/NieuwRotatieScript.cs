@@ -52,7 +52,8 @@ public class NieuwRotatieScript : MonoBehaviour {
 		Highscore = 10000 - Increaser;
 		if(Highscore < 0)
 		{
-			Highscore = 0;
+			//Highscore = 0;
+			Application.LoadLevel(Application.loadedLevel);
 		}
 		
 
